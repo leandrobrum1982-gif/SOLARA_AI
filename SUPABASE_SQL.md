@@ -71,6 +71,64 @@ alter publication supabase_realtime add table aprovacoes;
    - Acesse http://localhost:3000/login
    - Use as credenciais do usuário criado
 
+## 3. Tabela `extratos_importados`
+
+```sql
+create table extratos_importados (
+  id uuid default gen_random_uuid() primary key,
+  nome_arquivo text not null,
+  importado_em timestamptz default now(),
+  importado_por uuid references auth.users(id),
+  total_linhas int,
+  total_creditos numeric(15,2),
+  raw_content text
+);
+
+create index idx_extratos_data on extratos_importados(importado_em);
+```
+
+## 4. Tabela `lancamentos`
+
+```sql
+create table lancamentos (
+  id uuid default gen_random_uuid() primary key,
+  extrato_id uuid not null references extratos_importados(id) on delete cascade,
+  data date not null,
+  descricao text not null,
+  valor numeric(15,2) not null,
+  tipo text not null check (tipo in ('credito', 'debito')),
+  cod_titulo_casado text,
+  situacao text not null check (situacao in ('casado', 'divergente', 'ignorado')),
+  criado_em timestamptz default now()
+);
+
+create index idx_lancamentos_extrato on lancamentos(extrato_id);
+create index idx_lancamentos_tipo on lancamentos(tipo);
+create index idx_lancamentos_situacao on lancamentos(situacao);
+```
+
+## 5. Tabela `divergencias`
+
+```sql
+create table divergencias (
+  id uuid default gen_random_uuid() primary key,
+  extrato_id uuid not null references extratos_importados(id) on delete cascade,
+  tipo_inicial text,
+  lancamento_id uuid references lancamentos(id),
+  cod_titulo text,
+  valor_lancamento numeric(15,2),
+  valor_titulo numeric(15,2),
+  status text not null default 'nova' check (status in ('nova', 'investigando', 'aguardando_aprovacao', 'resolvida')),
+  hipotese jsonb,
+  criado_em timestamptz default now()
+);
+
+create index idx_divergencias_extrato on divergencias(extrato_id);
+create index idx_divergencias_status on divergencias(status);
+
+alter publication supabase_realtime add table divergencias;
+```
+
 ---
 
 **Tabela de configuração do Supabase:**
@@ -80,4 +138,7 @@ alter publication supabase_realtime add table aprovacoes;
 | `perfis` | Usuarios e permissões | CLAUDE.md | ✅ Já existe |
 | `execucoes_agentes` | Log de execuções | Este arquivo | ⏳ Aguarda SQL |
 | `aprovacoes` | Fila de aprovação | Este arquivo | ⏳ Aguarda SQL |
+| `extratos_importados` | Importações do banco | Este arquivo | ⏳ Aguarda SQL |
+| `lancamentos` | Linhas do extrato | Este arquivo | ⏳ Aguarda SQL |
+| `divergencias` | Itens para investigação | Este arquivo | ⏳ Aguarda SQL |
 
