@@ -111,7 +111,7 @@
   color: #333;
 }
 
-textarea {
+.textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -121,7 +121,7 @@ textarea {
   resize: vertical;
 }
 
-textarea:focus {
+.textarea:focus {
   outline: none;
   border-color: #3498db;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
@@ -132,7 +132,7 @@ textarea:focus {
   gap: 10px;
 }
 
-button {
+.botao {
   flex: 1;
   padding: 12px;
   border: none;
@@ -170,7 +170,7 @@ button {
   background: #c0392b;
 }
 
-button:disabled {
+.botao:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

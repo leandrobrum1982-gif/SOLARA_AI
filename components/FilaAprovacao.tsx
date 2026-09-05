@@ -179,6 +179,7 @@ export default function FilaAprovacao({ area }: FilaAprovacaoProps) {
           <div className={styles.edicao}>
             <label>Editar proposta (opcional):</label>
             <textarea
+              className={styles.textarea}
               value={propostaEditada}
               onChange={(e) => setPropostaEditada(e.target.value)}
               placeholder="Deixe em branco para manter a proposta original"
@@ -189,6 +190,7 @@ export default function FilaAprovacao({ area }: FilaAprovacaoProps) {
           <div className={styles.rejeicao}>
             <label>Motivo da rejeição (se rejeitar):</label>
             <textarea
+              className={styles.textarea}
               value={observacao}
               onChange={(e) => setObservacao(e.target.value)}
               placeholder="Descreva o motivo"
@@ -198,23 +200,23 @@ export default function FilaAprovacao({ area }: FilaAprovacaoProps) {
 
           <div className={styles.botoes}>
             <button
+              className={styles.botao + " " + styles.aprovado}
               onClick={handleAprovar}
               disabled={carregando}
-              className={styles.aprovado}
             >
               Aprovar
             </button>
             <button
+              className={styles.botao + " " + styles.editado}
               onClick={handleEditar}
               disabled={carregando}
-              className={styles.editado}
             >
               Salvar Edição e Aprovar
             </button>
             <button
+              className={styles.botao + " " + styles.rejeitado}
               onClick={handleRejeitar}
               disabled={carregando || !observacao}
-              className={styles.rejeitado}
             >
               Rejeitar
             </button>
