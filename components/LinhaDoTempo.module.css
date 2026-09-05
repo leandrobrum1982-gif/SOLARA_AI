@@ -1,0 +1,174 @@
+.container {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  margin-top: 15px;
+}
+
+.container h4 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.vazio {
+  color: #999;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cabecalho {
+  display: grid;
+  grid-template-columns: 30px 80px 100px 60px 80px 30px;
+  gap: 10px;
+  padding: 12px;
+  background: #f9f9f9;
+  cursor: pointer;
+  align-items: center;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.cabecalho:hover {
+  background: #f0f0f0;
+}
+
+.indice {
+  font-weight: 700;
+  color: #666;
+  text-align: center;
+}
+
+.status {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.agente {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  text-transform: capitalize;
+  word-break: break-word;
+}
+
+.tempo {
+  font-size: 12px;
+  color: #666;
+  text-align: right;
+}
+
+.tokens {
+  font-size: 11px;
+  color: #999;
+  text-align: right;
+}
+
+.expandir {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+}
+
+.conteudo {
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+}
+
+.secao {
+  margin-bottom: 15px;
+}
+
+.secao:last-child {
+  margin-bottom: 0;
+}
+
+.secao h5 {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.secao pre {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 11px;
+  margin: 0;
+  max-height: 200px;
+  font-family: "Courier New", monospace;
+}
+
+.secao.erro {
+  background: #fee;
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 4px solid #e74c3c;
+}
+
+.secao.erro pre {
+  background: white;
+  color: #c0392b;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.tabela tr td {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.tabela tr td:first-child {
+  font-weight: 600;
+  color: #666;
+  width: 40%;
+}
+
+.tabela tr td:last-child {
+  color: #333;
+  font-family: monospace;
+}
+
+.tabela tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 800px) {
+  .cabecalho {
+    grid-template-columns: 30px 60px 1fr 30px;
+    gap: 5px;
+  }
+
+  .tempo,
+  .tokens {
+    display: none;
+  }
+}
