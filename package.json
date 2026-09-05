@@ -1,0 +1,33 @@
+{
+  "name": "solara-os",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000S\u0000O\u0000L\u0000A\u0000R\u0000A\u0000_\u0000A\u0000I\u0000\r\u0000 \u0000",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrobrum1982-gif/SOLARA_AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandrobrum1982-gif/SOLARA_AI/issues"
+  },
+  "homepage": "https://github.com/leandrobrum1982-gif/SOLARA_AI#readme",
+  "dependencies": {
+    "@supabase/ssr": "^0.12.6",
+    "@supabase/supabase-js": "^2.115.0",
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "next": "^16.3.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "^7.0.2"
+  }
+}
